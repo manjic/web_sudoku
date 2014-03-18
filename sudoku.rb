@@ -1,6 +1,6 @@
 require 'sinatra'
 
+
 get '/' do
-  
-  "hello, sudoku"
+  "Hello, sudoku"
 end
