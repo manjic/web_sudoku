@@ -8,6 +8,8 @@ require_relative './helpers/application'
 enable :sessions
 use Rack::Flash
 set :partial_template_engine, :erb
+set :session_secret, "123456"
+
 
 
 
