@@ -10,9 +10,6 @@ use Rack::Flash
 set :partial_template_engine, :erb
 set :session_secret, "123456"
 
-
-
-
 def random_sudoku
   seed = (1..9).to_a.shuffle + Array.new(81-9, 0)
   sudoku = Sudoku.new(seed.join) 
