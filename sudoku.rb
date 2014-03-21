@@ -67,6 +67,11 @@ get '/hard' do
   redirect '/'
 end
 
+post '/solution' do
+  session[:current_solution] = session[:solution]
+  redirect to("/")
+end
+
 def prepare_to_check_solution
   @check_solution = session[:check_solution]
   if @check_solution
