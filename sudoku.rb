@@ -95,6 +95,15 @@ def box_order_to_row_order(cells)
 end
 
 
+get '/help' do
+
+end
+
+get '/reset' do
+  session[:current_solution] = session[:puzzle]
+  redirect to("/")
+end
+
 
 
 
