@@ -18,7 +18,14 @@ def random_sudoku
 end
 
 def puzzle(sudoku)
-  sudoku.map {|x| rand < 0.3 ? 0 : x }
+  level = session[:level] ||= 0.3
+  sudoku.map {|x| rand < level.to_f ? 0 : x} 
+end
+
+post '/difficulty' do
+  session[:current_solution] = nil
+  session[:level] = params[:level]
+  redirect to("/")
 end
 
 get '/' do

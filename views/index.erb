@@ -31,12 +31,11 @@
     <% end %>
     <button>Check solution</button>
   </form>
-  <form action="/hard" method="get">
-    <button>New Hard Game</button>
-  </form>
-  <form action="/easy" method="get">
-    <button>New Easy Game</button>
-  </form>
+<form action="/difficulty" method="post" >
+      <button class="button_style" name="level" value="0.3" >Easy</button> 
+      <button class="button_style" name="level" value="0.5" >Medium</button>
+      <button class="button_style" name="level" value="0.7" >Hard</button> 
+    </form>
   </div>
    <h1>CHUCK NORRIS SUDOKU FAQS
       <p>When Chuck Norris plays sudoku, he can put two same numbers in one square and still solve it right</p>
