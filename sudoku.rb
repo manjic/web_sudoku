@@ -18,8 +18,7 @@ def random_sudoku
 end
 
 def puzzle(sudoku)
-  #need to implement code here
-  sudoku
+  sudoku.map {|x| rand < 0.3 ? 0 : x }
 end
 
 get '/' do
@@ -41,7 +40,7 @@ end
 
 post '/' do
   cells = (params["cell"])  
-  session[:current_solution] = cells.map{|value| value.to_i }.join
+  session[:current_solution] = box_order_to_row_order(cells)
   session[:check_solution] = true
   redirect to("/")
 end
@@ -49,6 +48,16 @@ end
 get '/solution' do
   @current_solution = session[:solution]
   erb :index
+end
+ 
+get '/easy' do
+  session.clear
+  redirect '/'
+end
+
+get '/hard' do
+  session.clear
+  redirect '/'
 end
 
 def prepare_to_check_solution

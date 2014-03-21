@@ -4,7 +4,7 @@
   <h1>CHUCK NORRIS SUDOKU</h1>
   <div id="flash">
     <%= flash[:notice] %>
-    </div>
+  </div>
   <title>Sudoku Game</title>   
   <!-- link to the CSS stylesheet -->
   <link href="/stylesheets/application.css" rel="stylesheet" type="text/css">
@@ -30,7 +30,13 @@
         </div>
     <% end %>
     <button>Check solution</button>
-    </form>
+  </form>
+  <form action="/hard" method="get">
+    <button>New Hard Game</button>
+  </form>
+  <form action="/easy" method="get">
+    <button>New Easy Game</button>
+  </form>
   </div>
    <h1>CHUCK NORRIS SUDOKU FAQS
       <p>When Chuck Norris plays sudoku, he can put two same numbers in one square and still solve it right</p>
@@ -38,7 +44,7 @@
       <p>When Alexander Bell invented the telephone he had 3 missed calls from Chuck Norris- they were all about sudoku</p>
       <p>Chuck Norris can use the number 10 in sudoku</p>
    </h1>
-   <a href= "http://www.el.com/links/sudoku.asp"> 
+   <a  href= "http://www.el.com/links/sudoku.asp"> 
       <img src=http://goo.gl/eo2Uhq></a>
 </body>
 </html>
