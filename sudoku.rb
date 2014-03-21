@@ -22,6 +22,16 @@ def puzzle(sudoku)
   sudoku.map {|x| rand < level.to_f ? 0 : x} 
 end
 
+get '/easy' do
+  session.clear
+  redirect '/'
+end
+
+get '/hard' do
+  session.clear
+  redirect '/'
+end
+
 post '/difficulty' do
   session[:current_solution] = nil
   session[:level] = params[:level]
@@ -37,14 +47,6 @@ get '/' do
   erb :index
 end
 
-def generate_new_puzzle_if_necessary
-  return if session[:current_solution] && session[:solution] && session[:puzzle]
-  sudoku = random_sudoku
-  session[:solution] = sudoku
-  session[:puzzle] = puzzle(sudoku)
-  session[:current_solution] = session[:puzzle]    
-end
-
 post '/' do
   cells = (params["cell"])  
   session[:current_solution] = box_order_to_row_order(cells)
@@ -57,28 +59,39 @@ get '/solution' do
   erb :index
 end
  
-get '/easy' do
-  session.clear
-  redirect '/'
-end
-
-get '/hard' do
-  session.clear
-  redirect '/'
-end
-
 post '/solution' do
   session[:current_solution] = session[:solution]
   redirect to("/")
 end
 
 def prepare_to_check_solution
-  @check_solution = session[:check_solution]
-  if @check_solution
+  if @check_solution = session[:check_solution]
+     @check_solution
     flash[:notice] = "Incorrect values are highlighted in yellow"
   end
   session[:check_solution] = nil
 end
+
+
+
+get '/help' do
+  erb :help
+end
+
+get '/reset' do
+  session[:current_solution] = session[:puzzle]
+  redirect to("/")
+end
+
+def generate_new_puzzle_if_necessary
+  return if session[:current_solution] && session[:solution] && session[:puzzle]
+  sudoku = random_sudoku
+  session[:solution] = sudoku
+  session[:puzzle] = puzzle(sudoku)
+  session[:current_solution] = session[:puzzle]    
+end
+
+
 
 def box_order_to_row_order(cells)
   boxes = cells.each_slice(9).to_a
@@ -94,15 +107,6 @@ def box_order_to_row_order(cells)
   }
 end
 
-
-get '/help' do
-
-end
-
-get '/reset' do
-  session[:current_solution] = session[:puzzle]
-  redirect to("/")
-end
 
 
 
