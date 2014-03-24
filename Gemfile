@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
+ruby '2.1.0'
 gem 'sinatra'
+gem 'newrelic_rpm'
 gem 'shotgun'
 gem 'sinatra-partial'
 gem 'rack-flash3'

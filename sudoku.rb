@@ -1,9 +1,11 @@
 require 'sinatra'
+require 'newrelic_rpm'
 require 'rack-flash'
 require 'sinatra/partial'
 require_relative './lib/sudoku'
 require_relative './lib/cell'
 require_relative './helpers/application'
+
 
 enable :sessions
 use Rack::Flash
